@@ -1,0 +1,127 @@
+generator client {
+ provider = "prisma-client-js"
+}
+datasource db {
+ provider = "postgresql"
+ url = env("DATABASE_URL")
+}
+enum Role {
+ STUDENT
+ REVIEWER
+ ADMIN
+}
+model User {
+ id String @id
+ email String @unique
+ name String
+ passwordHash String
+ role Role @default(STUDENT)
+ createdAt DateTime @default(now())
+ sessions Session[]
+ attempts Attempt[]
+ studyRecords StudyRecord[]
+ masteries Mastery[]
+ reviews Review[]
+}
+model Session {
+ id String @id
+ userId String
+ expiresAt DateTime
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ @@index([userId])
+ @@index([expiresAt])
+}
+model Paper {
+ id String @id
+ year Int
+ name String
+ family String
+ variant String
+ sourceUrl String?
+ note String
+ questions ExamQuestion[]
+ @@unique([year,name,variant])
+}
+model ExamQuestion {
+ id String @id
+ paperId String
+ number String
+ category String
+ title String
+ sourceUrl String
+ sourceTitle String
+ authorization String @default("UNKNOWN")
+ authorizationEvidence String?
+ verification String @default("PENDING")
+ verificationEvidence String?
+ verifiedBy String?
+ verifiedAt DateTime?
+ body String?
+ reference String?
+ annotationIds String[]
+ knowledgePoints String[] @default([])
+ learningAnalysis String?
+ commonMistake String?
+ version Int @default(1)
+ paper Paper @relation(fields:[paperId],references:[id])
+ @@unique([paperId,number])
+ @@index([category,verification,authorization])
+}
+model Attempt {
+ id String @id
+ userId String
+ exerciseId String
+ answer String
+ assessment Json
+ createdAt DateTime @default(now())
+ reviewStatus String @default("NONE")
+ assignedTo String?
+ finalPoints Json?
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ reviews Review[]
+ @@index([userId,createdAt])
+ @@index([reviewStatus])
+}
+model Review {
+ id String @id
+ attemptId String
+ reviewerId String
+ reason String
+ points Json
+ createdAt DateTime @default(now())
+ attempt Attempt @relation(fields:[attemptId],references:[id],onDelete:Cascade)
+ reviewer User @relation(fields:[reviewerId],references:[id])
+}
+model StudyRecord {
+ id String @id
+ userId String
+ annotationId String
+ action String
+ createdAt DateTime @default(now())
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ @@index([userId,annotationId])
+}
+model Mastery {
+ id String @id
+ userId String
+ annotationId String
+ evidenceCount Int
+ ratio Float
+ updatedAt DateTime @updatedAt
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ @@unique([userId,annotationId])
+}
+model Audit {
+ id String @id
+ actorId String
+ action String
+ entityId String
+ details Json
+ createdAt DateTime @default(now())
+}
+model RateBucket {
+ id String @id
+ count Int
+ resetAt DateTime
+}
+

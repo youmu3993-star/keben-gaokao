@@ -1,0 +1,19 @@
+# Render web service. DATABASE_URL is supplied in the dashboard, never committed.
+# Use a durable PostgreSQL database (for example, Neon or paid Render Postgres).
+services:
+  - type: web
+    name: keben-gaokao
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DEMO_MODE
+        value: "false"
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: TRUST_PROXY
+        value: "false"
+

@@ -1,0 +1,336 @@
+{
+  "researchedAt": "2026-10-13",
+  "scope": "2015—2026卷别目录；七条有来源的题目元数据，其中四条《劝学》案例；不含未授权完整题干或官方评分标准",
+  "authorization": "UNKNOWN",
+  "paperNames": [
+    {
+      "year": 2015,
+      "names": [
+        "新课标Ⅰ卷",
+        "新课标Ⅱ卷"
+      ],
+      "note": "根据用户提供的汇编目录建立卷别；题目与原卷版本仍需逐一核验",
+      "sources": [],
+      "verification": "DIRECTORY_ONLY"
+    },
+    {
+      "year": 2016,
+      "names": [
+        "新课标Ⅰ卷",
+        "新课标Ⅱ卷"
+      ],
+      "note": "根据用户提供的汇编目录建立卷别；题目与原卷版本仍需逐一核验",
+      "sources": [],
+      "verification": "DIRECTORY_ONLY"
+    },
+    {
+      "year": 2017,
+      "names": [
+        "全国Ⅰ卷",
+        "全国Ⅱ卷"
+      ],
+      "note": "根据用户提供的汇编目录建立卷别；题目与原卷版本仍需逐一核验",
+      "sources": [],
+      "verification": "DIRECTORY_ONLY"
+    },
+    {
+      "year": 2018,
+      "names": [
+        "全国Ⅰ卷",
+        "全国Ⅱ卷"
+      ],
+      "note": "根据用户提供的汇编目录建立卷别；题目与原卷版本仍需逐一核验",
+      "sources": [],
+      "verification": "DIRECTORY_ONLY"
+    },
+    {
+      "year": 2019,
+      "names": [
+        "全国Ⅰ卷",
+        "全国Ⅱ卷"
+      ],
+      "note": "当年另有全国Ⅲ卷；不得将Ⅰ/Ⅱ统一改写为新高考卷",
+      "sources": [
+        "https://cdn.gaokzx.com/zixunzhan/202403/161a0d0d-340f-4499-a73f-104c921fa64d.pdf",
+        "https://edu.sina.cn/gaokao/gkrx/2019-06-08/detail-ihvhiqay4336039.d.html"
+      ],
+      "verification": "SECONDARY_SOURCE_CHECKED"
+    },
+    {
+      "year": 2020,
+      "names": [
+        "全国Ⅰ卷",
+        "全国Ⅱ卷",
+        "新高考Ⅰ卷",
+        "新高考Ⅱ卷"
+      ],
+      "note": "四套不可混并；全国Ⅲ卷另存于扩展范围",
+      "sources": [
+        "https://www.moe.gov.cn/jyb_xwfb/s5147/202007/t20200708_470708.html"
+      ],
+      "verification": "OFFICIAL_REPORT_CHECKED"
+    },
+    {
+      "year": 2021,
+      "names": [
+        "新高考Ⅰ卷",
+        "新高考Ⅱ卷"
+      ],
+      "note": "当年另有全国甲卷、全国乙卷；不要制造2021全国Ⅰ卷/Ⅱ卷",
+      "sources": [
+        "https://www.moe.gov.cn/jyb_xwfb/s5147/202106/t20210608_536477.html?authkey=boxdr3"
+      ],
+      "verification": "OFFICIAL_REPORT_CHECKED"
+    },
+    {
+      "year": 2022,
+      "names": [
+        "新高考Ⅰ卷",
+        "新高考Ⅱ卷"
+      ],
+      "note": "名篇名句默写存在新、旧课标版本，应在唯一键中加入variant",
+      "sources": [
+        "https://edu.people.com.cn/n1/2022/0607/c1053-32440586.html"
+      ],
+      "verification": "OFFICIAL_REPORT_REPUBLICATION_CHECKED"
+    },
+    {
+      "year": 2023,
+      "names": [
+        "新课标Ⅰ卷",
+        "新课标Ⅱ卷"
+      ],
+      "note": "官方评析使用新课标卷名称；另有全国甲、乙卷",
+      "sources": [
+        "https://news.cctv.cn/2023/06/07/ARTIXCWzuuHC6HzA1kEQsC9k230607.shtml"
+      ],
+      "verification": "OFFICIAL_REPORT_REPUBLICATION_CHECKED"
+    },
+    {
+      "year": 2024,
+      "names": [
+        "新课标Ⅰ卷",
+        "新课标Ⅱ卷"
+      ],
+      "note": "另有全国甲卷",
+      "sources": [
+        "https://static.nfnews.com/content/202406/08/c8975704.html"
+      ],
+      "verification": "OFFICIAL_REPORT_REPUBLICATION_CHECKED"
+    },
+    {
+      "year": 2025,
+      "names": [
+        "全国一卷",
+        "全国二卷"
+      ],
+      "note": "名称应按当年实际来源记录",
+      "sources": [
+        "https://paper.people.com.cn/rmrb/pc/attachement/202506/08/5c9b4abc-e775-4f93-bdd8-00ed8c99a6b9.pdf"
+      ],
+      "verification": "PRIMARY_NEWS_REPORT_CHECKED"
+    },
+    {
+      "year": 2026,
+      "names": [
+        "全国一卷",
+        "全国二卷"
+      ],
+      "note": "2026考试已举行。用户提供的汇编试题与答案中有全国Ⅱ卷17(1)《劝学》默写；二级网络来源交叉核对，官方原卷和授权仍待确认。",
+      "sources": [
+        "https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2026/2026_zt08/mtbd/202606/t20260608_1439853.html",
+        "https://www.moe.gov.cn/jyb_xwfb/xw_zt/moe_357/2026/2026_zt08/mtbd/202606/t20260610_1440059.html"
+      ],
+      "verification": "OFFICIAL_REPORT_SEARCH_INDEX_CHECKED",
+      "openNote": "搜索索引返回教育部正文，直接open在研究工具中返回Internal Error，仍需站点人工打开复核"
+    }
+  ],
+  "records": [
+    {
+      "id": "2016-national-1-q10-1",
+      "year": 2016,
+      "paper": "新课标Ⅰ卷",
+      "variant": "标准版",
+      "questionNumber": "10(1)",
+      "type": "名句默写",
+      "title": "《劝学》蚯蚓用心专一",
+      "association": "题意提示蚯蚓条件较弱而能取食饮泉，设空对应“上食埃土，下饮黄泉”；完整原题不公开",
+      "knowledgeTags": [
+        "情境默写",
+        "句内因果",
+        "字形"
+      ],
+      "sourceUrl": "https://tiku.baidu.com/tikupc/paperdetail/c6d288eb6294dd88d0d26b04?key=20170214",
+      "sourceTitle": "百度题库2016全国Ⅰ卷存档；另与用户提供的汇编PDF交叉",
+      "sourceType": "SECONDARY_ARCHIVE_AND_USER_PDF",
+      "sourceLocator": "用户汇编空白卷PDF第5页；该页题号重排为4",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "PENDING_OFFICIAL_EXAM",
+      "verificationNote": "二级来源载题号10(1)；汇编改题号，尚未由教师对正式原卷签核",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2019-national-1-q13",
+      "year": 2019,
+      "paper": "全国Ⅰ卷",
+      "variant": "标准卷",
+      "questionNumber": "13",
+      "type": "文言阅读",
+      "title": "《史记·屈原贾生列传》句子翻译",
+      "association": "《劝学》的实词语境义、句式与逐词落实方法迁移；是学习设计关联，不是命题直接引用《劝学》",
+      "knowledgeTags": [
+        "文言实词",
+        "句子翻译",
+        "语境推断"
+      ],
+      "sourceUrl": "https://cdn.gaokzx.com/zixunzhan/202403/161a0d0d-340f-4499-a73f-104c921fa64d.pdf",
+      "sourceTitle": "北京高考在线存档：2019年高考真题语文（全国Ⅰ卷）",
+      "sourceType": "SECONDARY_EXAM_PDF",
+      "sourceLocator": "PDF第8页（索引7），13题；web提取行239—241",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "METADATA_VERIFIED_SECONDARY",
+      "verificationNote": "已打开PDF核对卷名、年份、题号与选文；未取得版权授权；2019全国Ⅰ卷16题并不含《劝学》",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2020-national-2-q16-1",
+      "year": 2020,
+      "paper": "全国Ⅱ卷",
+      "variant": "标准卷",
+      "questionNumber": "16(1)",
+      "type": "名句默写",
+      "title": "《劝学》木材加工与学习改变",
+      "association": "直接考查《劝学》首段木材加工比喻；可关联通假字与学习改变人的论证作用",
+      "knowledgeTags": [
+        "情境默写",
+        "通假字",
+        "比喻论证"
+      ],
+      "sourceUrl": "https://gaokao.eol.cn/shiti/zhenti/202007/t20200708_1737320.shtml",
+      "sourceTitle": "中国教育在线：2020年高考语文真题及答案（全国卷2）",
+      "sourceType": "SECONDARY_EXAM_ARCHIVE",
+      "additionalSources": [
+        "https://gaokao.eol.cn/shiti/zhenti/202007/t20200707_1736918.shtml?fromcoop=selfeol",
+        "https://www.gaokzx.com/c/202104/51247.html",
+        "https://cdn.zizzs.com/zixunzhan/202310/9f74b8fa-9c35-4700-8194-8cde54226af2.pdf"
+      ],
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "METADATA_CROSSCHECKED_SECONDARY",
+      "verificationNote": "中国教育在线档案可打开；官方解读转载确认全国Ⅱ卷考《劝学》，北京高考在线搜索索引确认首小题内容；扫描PDF可打开但截图工具失败，发布完整题干前应人工看扫描原卷核对题号",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2022-new-gaokao-1-old-curriculum-q17-1",
+      "year": 2022,
+      "paper": "新高考Ⅰ卷",
+      "variant": "旧课标默写版",
+      "questionNumber": "17(1)",
+      "type": "名句默写",
+      "title": "《劝学》劣马喻持之以恒",
+      "association": "直接考查《劝学》持之以恒的比喻；衔接驽马与骐骥对比、积累和坚持",
+      "knowledgeTags": [
+        "情境默写",
+        "比喻论证",
+        "坚持积累"
+      ],
+      "sourceUrl": "https://edu.sina.com.cn/gaokao/2022-06-08/doc-imizirau7276509.shtml",
+      "sourceTitle": "新浪教育：2022高考语文真题及参考答案（新高考Ⅰ卷）",
+      "sourceType": "SECONDARY_EXAM_ARCHIVE",
+      "additionalSources": [
+        "https://edu.people.com.cn/n1/2022/0607/c1053-32440586.html"
+      ],
+      "sourceLocator": "新浪正文第17(1)题；人民网转载教育考试院评析确认新、旧课标两个版本",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "METADATA_VERIFIED_WITH_OFFICIAL_VERSION_NOTE",
+      "verificationNote": "已打开新浪正文核对年份、卷名、17(1)题；原站注明试题来自百度文库，不能称考试院官方原卷。人民网评析确认劝学属于旧课标版，新课标版考篇不同",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2023-new-curriculum-1-q14",
+      "year": 2023,
+      "paper": "新课标Ⅰ卷",
+      "variant": "标准卷",
+      "questionNumber": "14",
+      "type": "文言阅读",
+      "title": "韩非与子鲋观点交锋的论证比较",
+      "association": "《劝学》的观点与论据关系、类比与论证分析方法迁移；是学习设计关联，不是题干直接引《劝学》",
+      "knowledgeTags": [
+        "比较阅读",
+        "论证分析",
+        "观点与论据"
+      ],
+      "sourceUrl": "https://news.cctv.cn/2023/06/07/ARTIXCWzuuHC6HzA1kEQsC9k230607.shtml",
+      "sourceTitle": "央视网转载教育部教育考试院：2023年高考语文试题评析",
+      "sourceType": "OFFICIAL_REPORT_REPUBLICATION",
+      "sourceLocator": "段落“创新命题形式，减少机械刷题”；web正文行145",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "METADATA_VERIFIED_OFFICIAL_REPORT",
+      "verificationNote": "已打开官方评析转载核对卷名、选文《韩非子·难一》《孔丛子·答问》与第14题；完整题干和官方评分点未导入",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2024-new-curriculum-1-q23",
+      "year": 2024,
+      "paper": "新课标Ⅰ卷",
+      "variant": "标准卷",
+      "questionNumber": "23",
+      "type": "作文应用",
+      "title": "答案与问题",
+      "association": "从《劝学》的善假于物迁移到技术与自主思考的关系；作品引用须结合论点解释，不能只堆砌名句",
+      "knowledgeTags": [
+        "作文迁移",
+        "善假于物",
+        "辩证思考"
+      ],
+      "sourceUrl": "https://static.nfnews.com/content/202406/08/c8975704.html",
+      "sourceTitle": "南方+转载教育部教育考试院全套语文试题解析",
+      "sourceType": "OFFICIAL_REPORT_REPUBLICATION",
+      "additionalSources": [
+        "https://fx.xwapp.moe.gov.cn/article/202406/6662af88813bc8035af97f4e.html"
+      ],
+      "sourceLocator": "“新课标I卷写作试题／答案与问题／23”段落",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "METADATA_VERIFIED_OFFICIAL_REPORT",
+      "verificationNote": "已打开南方+正文，核对新课标Ⅰ卷23题；教育部原始页面搜索可检索、工具直接打开失败；没有授权转载完整题干或声称拥有官方评分标准",
+      "fullPrompt": null,
+      "officialRubric": null
+    },
+    {
+      "id": "2026-national-2-q17-1",
+      "year": 2026,
+      "paper": "全国Ⅱ卷",
+      "variant": "标准版",
+      "questionNumber": "17(1)",
+      "type": "名句默写",
+      "title": "《劝学》骐骥与驽马对比",
+      "association": "题意提示骏马，设空对应“骐骥一跃，不能十步”；与2022旧课标版劣马题并读",
+      "knowledgeTags": [
+        "情境默写",
+        "对比论证",
+        "题干限定词"
+      ],
+      "sourceUrl": "https://m.sohu.com/a/1063529710_121124323",
+      "sourceTitle": "2026全国Ⅱ卷试题与分析转载；另与用户提供的汇编PDF交叉",
+      "sourceType": "SECONDARY_ARCHIVE_AND_USER_PDF",
+      "sourceLocator": "用户汇编试题PDF第6页17(1)；答案PDF第2页",
+      "authorizationStatus": "UNKNOWN",
+      "verificationStatus": "PENDING_OFFICIAL_EXAM",
+      "verificationNote": "二级来源与用户资料一致；官方原卷与版权授权仍待确认",
+      "fullPrompt": null,
+      "officialRubric": null
+    }
+  ],
+  "implementationNotes": [
+    "授权与核验是不同轴；核实题目存在不等于有转载授权。所有条目保持UNKNOWN授权，只展示元数据与外部来源。",
+    "数据库唯一键至少包括year、paper、variant、questionNumber；2020新旧全国卷不能合并，2022课标变体不能覆盖。",
+    "2019—2026筛选年份完整不代表八年完整试题库已经入库；缺失年份应显示待核验/待授权，不用原创题充作真题。",
+    "《劝学》课程全文应区分统编教材节选与荀子全篇，现代教材编排、注释不因古文属公共领域而自动可转载。",
+    "演示练习和AI评分标准应标注为本站原创/教学参考，不可标注真题官方评分。"
+  ]
+}
+
