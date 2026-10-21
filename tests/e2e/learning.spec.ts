@@ -1,6 +1,6 @@
 import { test,expect } from '@playwright/test';
 
-test('精读默认速懂，按需看题目答案与原文证据',async({page})=>{
+test('精读默认速懂，真题先作答后分层看解析',async({page})=>{
  await page.goto('/');
  await page.getByRole('button',{name:'君子生非异也，善假于物也',exact:true}).click();
  await expect(page.getByRole('tab',{name:'30 秒看懂'})).toHaveAttribute('aria-selected','true');
@@ -17,12 +17,19 @@ test('精读默认速懂，按需看题目答案与原文证据',async({page})=>
  await page.getByRole('button',{name:'真题档案',exact:true}).click();
  const caseCard=page.locator('.case-pair article').first();
  await expect(caseCard.locator('.case-prompt')).toBeVisible();
- await expect(caseCard.locator('.case-answer')).toBeVisible();
- await expect(caseCard.getByText('原文定位')).toBeVisible();
- await page.locator('.exam-row').filter({has:page.getByRole('heading',{name:'答案与问题 · 技术与自主思考'})}).getByRole('button',{name:'看原题与解析'}).click();
- await expect(page.getByRole('heading',{name:'可借鉴的表达段落'})).toBeVisible();
+ await expect(caseCard.locator('.case-answer')).toHaveCount(0);
+ await page.locator('.exam-row').filter({has:page.getByRole('heading',{name:'答案与问题 · 技术与自主思考'})}).getByRole('button',{name:'先作答，再看解析'}).click();
+ await expect(page.getByLabel('先写下你的判断（可跳过，不计分）')).toBeVisible();
+ await expect(page.getByRole('heading',{name:'④ 参考表达'})).toHaveCount(0);
+ await page.getByLabel('先写下你的判断（可跳过，不计分）').fill('答案来得快，问题未必减少。');
+ await page.getByRole('button',{name:'锁定初稿，查看提示'}).click();
+ await expect(page.getByText('答案来得快，问题未必减少。')).toBeVisible();
+ await page.getByRole('button',{name:'查看原文依据'}).click();
+ await page.getByRole('button',{name:'查看自查要点'}).click();
+ await page.getByRole('button',{name:'查看参考表达'}).click();
+ await expect(page.getByRole('heading',{name:'④ 参考表达'})).toBeVisible();
+ await expect(page.getByLabel('修改后的答案')).toBeVisible();
  await expect(page.getByText('本站编写 · 教师审阅待完成')).toBeVisible();
- await expect(page.getByRole('heading',{name:'先看一句话差在哪里'})).toBeVisible();
  await expect(page.getByRole('heading',{name:'看完答案，试着判断一次'})).toBeVisible();
  await page.locator('.exam-check-options button').first().click();
  await expect(page.getByText('这里容易混淆')).toBeVisible();
@@ -41,6 +48,6 @@ test('学生互相隔离，教师复核需要角色和领取，来源/授权不�
  for(const [c,n] of [[first,'a'],[second,'b']] as const){const r=await c.post('/api/auth/register',{data:{email:`isolation-${n}-${Date.now()}@example.test`,password:'test-password-2026',name:n}});expect(r.status()).toBe(200);}
  const answer=await first.post('/api/attempts',{data:{exerciseId:'translate',answer:'天性没有不同，善于借助外物。'}});expect(answer.status()).toBe(201);const a=(await answer.json()).attempt;
  const other=await second.get('/api/learning');expect((await other.json()).attempts).toHaveLength(0);expect((await second.post('/api/reviews/request',{data:{attemptId:a.id}})).status()).toBe(404);expect((await second.get('/api/reviews')).status()).toBe(403);expect((await second.post('/api/reviews/claim',{data:{attemptId:a.id}})).status()).toBe(403);expect((await second.post('/api/admin/questions/status',{data:{id:'2020-II-16-1',authorization:'APPROVED',verification:'VERIFIED'}})).status()).toBe(403);
- expect((await first.post('/api/study',{data:{annotationId:'yi',action:'SAVE'},headers:{origin:'https://evil.test'}})).status()).toBe(403);const exams=await first.get('/api/exams');expect((await exams.json()).questions.every((q:{body:unknown})=>q.body===null)).toBe(true);const history=await first.get('/api/learning');expect((await history.json()).masteries).toHaveLength(0);await first.dispose();await second.dispose();
+ expect((await first.post('/api/study',{data:{annotationId:'yi',action:'SAVE'},headers:{origin:'https://evil.test'}})).status()).toBe(403);const exams=await first.get('/api/exams');expect((await exams.json()).questions.some((q:{displayBasis?:string;body:unknown})=>q.displayBasis==='USER_MATERIAL'&&Boolean(q.body))).toBe(true);const history=await first.get('/api/learning');expect((await history.json()).masteries).toHaveLength(0);await first.dispose();await second.dispose();
 });
 
