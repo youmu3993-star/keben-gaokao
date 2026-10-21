@@ -6,6 +6,8 @@ import { AppError,authenticate,hashPassword,checkPassword,newToken,tokenHash,pub
 import { annotations,exercises } from '@/lib/content';
 import { papers,publicQuestion } from '@/lib/exams';
 import { grade } from '@/lib/grading';
+import { generateTransfer } from '@/lib/transfer-generation';
+import { transferTargets } from '@/lib/transfer-practice';
 import { updateMastery } from '@/lib/mastery';
 import { accountInput,questionInput } from '@/lib/validation';
 import { assertLocalRequest,isLocalPrivateMode } from '@/lib/private-data';
@@ -45,6 +47,15 @@ async function handle(req:NextRequest,write:boolean) {
  }
  const u=await authenticate(token);
  if(route==='auth/logout'&&write){await transaction(s=>{s.sessions=s.sessions.filter(x=>x.id!==tokenHash(token!));});const res=json({ok:true});res.cookies.delete('kg_session');return res;}
+ if(route==='transfer/generate'&&write){
+  if(!process.env.OPENAI_API_KEY)throw new AppError(503,'AI 出句暂未启用，请先使用本站预设练习');
+  const input=z.object({targetId:z.string()}).strict().parse(await body(req));
+  const target=transferTargets.find(t=>t.id===input.targetId);
+  if(!target)throw new AppError(404,'未找到这个练习字词');
+  await rateLimit('transfer:'+u.id,3,15*60*1000);
+  try{return json({exercise:await generateTransfer(target)});}
+  catch{return json({error:'AI 本次未生成可靠句子，请先使用本站预设练习'},503);}
+ }
  if(route==='learning'&&!write)return transaction(s=>json({attempts:s.attempts.filter(a=>a.userId===u.id).sort((a,b)=>b.createdAt.localeCompare(a.createdAt)),records:s.studyRecords.filter(r=>r.userId===u.id),masteries:s.masteries.filter(m=>m.userId===u.id)}));
  if(route==='study'&&write){const input=z.object({annotationId:z.string().refine(id=>annotations.some(a=>a.id===id)),action:z.enum(['READ','SAVE','REVISIT'])}).strict().parse(await body(req));await rateLimit(`study:${u.id}`,120,60000);return transaction(s=>{s.studyRecords.push({id:randomUUID(),userId:u.id,...input,createdAt:now()});return json({ok:true});});}
  if(route==='attempts'&&write) {

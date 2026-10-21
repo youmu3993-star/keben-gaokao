@@ -17,6 +17,16 @@ import { examGuides } from '../lib/exam-guides';
 import { examChecks, unavailableExamChecks } from '../lib/exam-checks';
 import { decodePrivateData,encodePrivateData } from '../lib/private-data';
 import { openDbRow, sealDbRow } from '../lib/pg-private';
+import { paragraphStudy, priorTextLinks } from '../lib/text-study';
+import { curatedTransfers, transferTargets } from '../lib/transfer-practice';
+test('四段译文与注释覆盖每条可点击标注，旧课文和迁移练习不伪装真题',()=>{
+ assert.equal(paragraphStudy.length,paragraphs.length);
+ const linked=new Set(paragraphStudy.flatMap(section=>section.notes.map(note=>note.annotationId).filter(Boolean)));
+ for(const a of annotations)assert.ok(linked.has(a.id),a.id+' 缺少下方注释入口');
+ for(const [i,section] of paragraphStudy.entries()){assert.ok(section.translation.length>15);assert.ok(section.notes.length>0);assert.ok(paragraphs[i].length>0);}
+ for(const link of priorTextLinks){assert.ok(paragraphs.some(p=>p.includes(link.nowQuote)));assert.ok(annotations.some(a=>a.id===link.annotationId));assert.ok(link.oldTitle.startsWith('《'));}
+ for(const target of transferTargets){const bank=curatedTransfers[target.id];assert.ok(bank?.length>=2);for(const item of bank){assert.equal(item.origin,'CURATED');assert.equal(item.targetId,target.id);assert.ok(item.sentence.includes(target.word));assert.ok(item.translation.length>10);assert.ok(item.points.length>=2);assert.ok(!paragraphs.some(p=>p.includes(item.sentence)));}}
+});
 test('精读追问覆盖每处标注，区分原文证据、推论与迁移边界',()=>{assert.deepEqual(Object.keys(learningCues).sort(),annotations.map(a=>a.id).sort());for(const a of annotations){const cue=learningCues[a.id];for(const value of [cue.question,cue.evidence,cue.inference,cue.pitfall,cue.boundary])assert.ok(value.length>8,`${a.id} 缺少有内容的精读提示`);}assert.match(learningCues.qiji.evidence,/一跃/);assert.match(learningCues.nu.evidence,/十驾/);assert.match(learningCues.xing.boundary,/核验/);assert.match(learningCues.kui.pitfall,/必要条件/);});
 test('详细解读的题源关联不制造题目，区分设空原句与同段线索',()=>{for(const a of annotations){const d=deepGuides[a.id];assert.ok(d,'每条可点击标注都有详细解读');for(const link of d.connections)assert.ok(seedQuestions.some(q=>q.id===link.questionId),'关联必须指向真实来源档案');}assert.equal(deepGuides.bao.connections[0].relation,'同段定位');assert.equal(deepGuides.rou.connections[0].relation,'原句考查');assert.equal(deepGuides.xing.connections[0].relation,'作文迁移');assert.ok(deepGuides.bao.recite.answer==='輮使之然也。');});
 test('案例题意与题档、课文定位一致',()=>{for(const c of examCases){assert.ok(seedQuestions.some(q=>q.id===c.id));assert.ok(annotations.some(a=>a.id===c.annotationId));assert.ok(paragraphs.some(p=>p.includes(c.answer.split(/[，；]/)[0])));}assert.notEqual(examCases[0].answer,examCases[1].answer);});

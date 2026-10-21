@@ -1,6 +1,7 @@
 'use client';
 import { useEffect,useState } from 'react';
 import LearningModes, { type StudyMode } from './learning-modes';
+import TextStudy from './text-study';
 import ExamCases from './exam-cases';
 import ExamGuide, { hasExamGuide } from './exam-guide';
 import { BookOpen, Bookmark, ArrowUpRight, ArrowRight, GraduationCap, Layers3, History, Feather, LogOut, X, Check, ChevronRight, ShieldCheck, Sparkles, Search, CircleHelp, Menu, Clock3, CheckCircle2, FileText, CircleDot, Plus, LibraryBig } from 'lucide-react';
@@ -77,6 +78,7 @@ export default function LearningApp(){
         <div className="reading-note"><Feather size={16}/><span>读懂这里就可以继续。<br/>题目和深挖都由你决定。</span></div>
       </aside>
      </div>
+      <TextStudy aiAvailable={status?.grading==='AI'} signedIn={!!user} onLogin={()=>setAuth(true)} onAnnotation={id=>{const a=annotations.find(item=>item.id===id);if(a){select(a);setFocusedSection(a.paragraph);document.getElementById('paragraph-'+a.paragraph)?.scrollIntoView({behavior:'smooth',block:'center'});}}}/>
       <div className="read-finish"><strong>学到这里，已经很好。</strong><span>读懂一处便有收获；想巩固时，再点原文里的另一句。</span></div>
     </>}
     {view==='exams'&&<>
